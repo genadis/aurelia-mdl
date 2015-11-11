@@ -1,0 +1,1 @@
+{"version":3,"sources":["index.js"],"names":[],"mappings":";;;;;;;AACO,SAAS,SAAS,CAAC,MAAM,EAAE;AAChC,QAAM,CAAC,eAAe,CAAC,OAAO,CAAC,CAAC;CACjC","file":"index.js","sourcesContent":["\r\nexport function configure(config) {\r\n  config.globalResources('./mdl');\r\n}\r\n\r\n"],"sourceRoot":"/source/"}
