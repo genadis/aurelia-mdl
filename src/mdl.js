@@ -110,10 +110,16 @@ function manageRipple(element) {
   if (element.classList.contains('mdl-js-ripple-effect')) {
     componentHandler.upgradeElement(element, 'MaterialRipple');
   }
+  /**
+   * Causes issues: upgrades nested elements that has mdl-js-ripple-effect class before the nested elements upgraded, marking them as
+   * MaterialRipple upgraded, when the nested elements upgraded, and ripple upgrade tries to take place, it doesn't because it is already
+   * marked as upgraded.
+   * eventually causing rippleElement to be null on MaterialRipple.
+   * NOTE: "mdl-js-ripple-effect" should be only on upgradable material elements, not on non material nested elements.
   let elements = element.querySelectorAll('.mdl-js-ripple-effect');
   for (let el of elements) {
     componentHandler.upgradeElement(el, 'MaterialRipple');
-  }
+  }*/
 }
 
 function upgradeElement(element, type) {
