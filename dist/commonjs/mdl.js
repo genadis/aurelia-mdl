@@ -122,28 +122,33 @@ function manageRipple(element) {
   if (element.classList.contains('mdl-js-ripple-effect')) {
     _encapsulatedMdl.componentHandler.upgradeElement(element, 'MaterialRipple');
   }
-  var elements = element.querySelectorAll('.mdl-js-ripple-effect');
-  var _iteratorNormalCompletion = true;
-  var _didIteratorError = false;
-  var _iteratorError = undefined;
 
-  try {
-    for (var _iterator = elements[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-      var el = _step.value;
+  if (element.MaterialIconToggle) {
+    var children = element.children;
+    var _iteratorNormalCompletion = true;
+    var _didIteratorError = false;
+    var _iteratorError = undefined;
 
-      _encapsulatedMdl.componentHandler.upgradeElement(el, 'MaterialRipple');
-    }
-  } catch (err) {
-    _didIteratorError = true;
-    _iteratorError = err;
-  } finally {
     try {
-      if (!_iteratorNormalCompletion && _iterator['return']) {
-        _iterator['return']();
+      for (var _iterator = children[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+        var child = _step.value;
+
+        if (child.classList.contains('mdl-js-ripple-effect')) {
+          _encapsulatedMdl.componentHandler.upgradeElement(child, 'MaterialRipple');
+        }
       }
+    } catch (err) {
+      _didIteratorError = true;
+      _iteratorError = err;
     } finally {
-      if (_didIteratorError) {
-        throw _iteratorError;
+      try {
+        if (!_iteratorNormalCompletion && _iterator['return']) {
+          _iterator['return']();
+        }
+      } finally {
+        if (_didIteratorError) {
+          throw _iteratorError;
+        }
       }
     }
   }
