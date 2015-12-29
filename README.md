@@ -138,7 +138,7 @@ or
 ```
 or
 ```html
-  <require from="../jspm_packages/github/genadis/encapsulated-mdl@2.0.0/material.amber-pink.min.css"></require>
+  <require from="encapsulated-mdl/material.amber-pink.min.css"></require>
 ```
 
 Use wrapped MDL components in your model views as explained above.
