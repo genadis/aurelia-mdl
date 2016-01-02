@@ -1,7 +1,9 @@
 # aurelia-mdl
 
 Aurelia wrapper for [Material Design Lite](http://www.getmdl.io).
-Base Source forked from [Thanood/aurelia-material](https://github.com/Thanood/aurelia-material)
+Base Source forked from [Thanood/aurelia-material](https://github.com/Thanood/aurelia-material).
+with lots of credit to [redpelicans/aurelia-material](https://github.com/redpelicans/aurelia-material).
+
 Merged into [aurelia/skeleton-plugin](https://github.com/aurelia/skeleton-plugin)
 
 Best to be used with [genadis/encapsulated-mdl](https://github.com/genadis/encapsulated-mdl) which is configured as jspm dependency. But should work with original mdl as well (will use global mdl), just change the jspm dependency.
