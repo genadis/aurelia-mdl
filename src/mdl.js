@@ -124,7 +124,7 @@ function manageRipple(element) {
   /** Some of the elements do require upgrade of nested elements, to avoid issues we must handle it carefully
    * NOTE: not sure about all the elements that require nested upgrading. Will add all the required when used and tested.
    */
-  if (element.MaterialIconToggle) {
+  if (element.MaterialIconToggle || element.MaterialCheckbox) {
     /* We need to upgrade immediate children only, no easy way to do it (for all browsers) */
     let children = element.children;
     for (let child of children) {
