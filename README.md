@@ -37,26 +37,26 @@ You will write in your views:
 `mdl` values are :
 
 ```
-[ 'button',
-  'textfield',
+[ 'badge',
+  'button',
+  'checkbox',
+  'data-table',
+  'dialog',
+  'grid',
+  'icon-toggle',
   'layout',
   'menu',
-  'data-table',
-  'tabs',
-  'slider',
-  'tooltip',
-  'progress',
-  'spinner',
-  'badge',
-  'switch',
-  'radio',
-  'icon-toggle',
-  'checkbox',
-  'dialog',
   'mega-footer',
   'mini-footer',
-  'grid',
-  'snackbar' ]
+  'progress',
+  'radio',
+  'slider',
+  'snackbar',
+  'spinner',
+  'switch',
+  'tabs',
+  'textfield',
+  'tooltip' ]
 ```
 ### Events
 
