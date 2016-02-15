@@ -1,6 +1,6 @@
 {
   "name": "aurelia-mdl",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "Aurelia wrapper for Material Design Lite.",
   "keywords": [
     "aurelia",
@@ -52,7 +52,7 @@
       "lib": "dist/amd"
     },
     "dependencies": {
-      "encapsulated-mdl": "github:genadis/encapsulated-mdl@^2.0.0"
+      "encapsulated-mdl": "github:genadis/encapsulated-mdl@^2.1.0"
     }
   }
 }
