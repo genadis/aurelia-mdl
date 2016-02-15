@@ -79,8 +79,8 @@ let mdlTypes = {
     fct: [manageRipple]
   },
   dialog: {
-    js: ['MaterialDialog'],
-    html: ['mdl-dialog', 'mdl-js-dialog'],
+    js: [],
+    html: ['mdl-dialog'],
     fct: []
   },
   'mega-footer': {
