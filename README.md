@@ -1,7 +1,9 @@
 # aurelia-mdl
 
 Aurelia wrapper for [Material Design Lite](http://www.getmdl.io).
-Base Source forked from [Thanood/aurelia-material](https://github.com/Thanood/aurelia-material)
+Base Source forked from [Thanood/aurelia-material](https://github.com/Thanood/aurelia-material).
+with lots of credit to [redpelicans/aurelia-material](https://github.com/redpelicans/aurelia-material).
+
 Merged into [aurelia/skeleton-plugin](https://github.com/aurelia/skeleton-plugin)
 
 Best to be used with [genadis/encapsulated-mdl](https://github.com/genadis/encapsulated-mdl) which is configured as jspm dependency. But should work with original mdl as well (will use global mdl), just change the jspm dependency.
@@ -138,8 +140,10 @@ or
 ```
 or
 ```html
-  <require from="../jspm_packages/github/genadis/encapsulated-mdl@2.0.0/material.amber-pink.min.css"></require>
+  <require from="encapsulated-mdl/material.amber-pink.min.css"></require>
 ```
+> Notice: you should have the dependency defined in package.json/config.js, so SystemJS would know where to look for `encapsulated-mdl`
+something like `"encapsulated-mdl": "github:genadis/encapsulated-mdl@^2.0.8"`.
 
 Use wrapped MDL components in your model views as explained above.
 
