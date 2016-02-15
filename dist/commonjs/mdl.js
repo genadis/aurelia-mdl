@@ -123,19 +123,36 @@ function manageRipple(element) {
     _encapsulatedMdl.componentHandler.upgradeElement(element, 'MaterialRipple');
   }
 
-  if (element.MaterialIconToggle) {
+  if (element.MaterialIconToggle || element.MaterialCheckbox) {
     var children = element.children;
+    if (children) {
+      for (var i = 0; i < children.length; i++) {
+        var child = children[i];
+        if (child.classList.contains('mdl-js-ripple-effect')) {
+          _encapsulatedMdl.componentHandler.upgradeElement(child, 'MaterialRipple');
+        }
+      }
+    }
+  }
+}
+
+function upgradeElement(element, type) {
+  var _ref = mdlTypes[type] || {};
+
+  var html = _ref.html;
+  var fct = _ref.fct;
+  var js = _ref.js;
+
+  if (html) {
     var _iteratorNormalCompletion = true;
     var _didIteratorError = false;
     var _iteratorError = undefined;
 
     try {
-      for (var _iterator = children[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-        var child = _step.value;
+      for (var _iterator = html[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+        var h = _step.value;
 
-        if (child.classList.contains('mdl-js-ripple-effect')) {
-          _encapsulatedMdl.componentHandler.upgradeElement(child, 'MaterialRipple');
-        }
+        element.classList.add(h);
       }
     } catch (err) {
       _didIteratorError = true;
@@ -152,49 +169,38 @@ function manageRipple(element) {
       }
     }
   }
-}
+  var _iteratorNormalCompletion2 = true;
+  var _didIteratorError2 = false;
+  var _iteratorError2 = undefined;
 
-function upgradeElement(element, type) {
-  var _ref = mdlTypes[type] || {};
-
-  var html = _ref.html;
-  var fct = _ref.fct;
-  var js = _ref.js;
-
-  if (html) {
-    var _iteratorNormalCompletion2 = true;
-    var _didIteratorError2 = false;
-    var _iteratorError2 = undefined;
-
+  try {
+    for (var _iterator2 = js[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+      var t = _step2.value;
+      _encapsulatedMdl.componentHandler.upgradeElement(element, t);
+    }
+  } catch (err) {
+    _didIteratorError2 = true;
+    _iteratorError2 = err;
+  } finally {
     try {
-      for (var _iterator2 = html[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
-        var h = _step2.value;
-
-        element.classList.add(h);
+      if (!_iteratorNormalCompletion2 && _iterator2['return']) {
+        _iterator2['return']();
       }
-    } catch (err) {
-      _didIteratorError2 = true;
-      _iteratorError2 = err;
     } finally {
-      try {
-        if (!_iteratorNormalCompletion2 && _iterator2['return']) {
-          _iterator2['return']();
-        }
-      } finally {
-        if (_didIteratorError2) {
-          throw _iteratorError2;
-        }
+      if (_didIteratorError2) {
+        throw _iteratorError2;
       }
     }
   }
+
   var _iteratorNormalCompletion3 = true;
   var _didIteratorError3 = false;
   var _iteratorError3 = undefined;
 
   try {
-    for (var _iterator3 = js[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
-      var t = _step3.value;
-      _encapsulatedMdl.componentHandler.upgradeElement(element, t);
+    for (var _iterator3 = fct[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
+      var f = _step3.value;
+      f(element);
     }
   } catch (err) {
     _didIteratorError3 = true;
@@ -207,30 +213,6 @@ function upgradeElement(element, type) {
     } finally {
       if (_didIteratorError3) {
         throw _iteratorError3;
-      }
-    }
-  }
-
-  var _iteratorNormalCompletion4 = true;
-  var _didIteratorError4 = false;
-  var _iteratorError4 = undefined;
-
-  try {
-    for (var _iterator4 = fct[Symbol.iterator](), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
-      var f = _step4.value;
-      f(element);
-    }
-  } catch (err) {
-    _didIteratorError4 = true;
-    _iteratorError4 = err;
-  } finally {
-    try {
-      if (!_iteratorNormalCompletion4 && _iterator4['return']) {
-        _iterator4['return']();
-      }
-    } finally {
-      if (_didIteratorError4) {
-        throw _iteratorError4;
       }
     }
   }
