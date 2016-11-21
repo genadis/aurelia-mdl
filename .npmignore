@@ -1,3 +1,10 @@
 jspm_packages
 bower_components
 .idea
+build
+src
+doc
+.editorconfig
+.eslintrc
+gulpfile.js
+karma.conf.js

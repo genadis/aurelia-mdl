@@ -1,6 +1,6 @@
 {
   "name": "aurelia-mdl",
-  "version": "0.3.0",
+  "version": "0.3.2",
   "description": "Aurelia wrapper for Material Design Lite.",
   "keywords": [
     "aurelia",
@@ -14,10 +14,13 @@
   },
   "license": "CC0-1.0",
   "author": "Genadi Sokolov (https://github.com/genadis)",
-  "main": "dist/commonjs/index.js",
+  "main": "dist/amd/index.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/genadis/aurelia-mdl"
+  },
+  "dependencies": {
+    "encapsulated-mdl": "^1.2.2"
   },
   "devDependencies": {
     "aurelia-tools": "^0.1.18",
