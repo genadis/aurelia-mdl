@@ -101,6 +101,44 @@ Now `isSmallScreen` property will hold boolean of whether MDL layout is for smal
 
 ## Install
 
+### Aurelia CLI
+
+Install the package:
+```shell
+npm install aurelia-mdl --save
+```
+Add package configuration to `aurelia.json`:
+```
+ "dependencies": [
+          {
+            "name": "encapsulated-mdl",
+            "path": "../node_modules/encapsulated-mdl/dist",
+            "main": "material.min",
+            "resources": [
+              "material.blue_grey-red.min.css"
+            ]
+          },
+          {
+            "name": "aurelia-mdl",
+            "path": "../node_modules/aurelia-mdl/dist/amd",
+            "main": "index",
+            "deps": ["encapsulated-mdl"]
+          }
+        ]
+```
+Notice the resources in encapsulated-mdl, add your favorite style.
+
+In your app.hml (or wherever):
+```
+<require from="encapsulated-mdl/material.blue_grey-red.min.css"></require>
+```
+And in [manual bootstrapping](http://aurelia.io/hub.html#/doc/article/aurelia/framework/latest/app-configuration-and-startup/4):
+```
+aurelia.use.plugin('aurelia-mdl');
+```
+
+### JSPM
+
 In your project install the plugin via `jspm` with following command
 
 ```
