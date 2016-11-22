@@ -117,7 +117,7 @@ or better yet add to your package.json jspm dependencies:
   }
 ```
 
-Make sure you use [manual bootstrapping](http://aurelia.io/docs#startup-and-configuration). 
+Make sure you use [manual bootstrapping](http://aurelia.io/hub.html#/doc/article/aurelia/framework/latest/app-configuration-and-startup/4). 
 
 Update  your bootstrapping:
 
