@@ -1,18 +1,22 @@
-System.register(['aurelia-framework', 'encapsulated-mdl', 'aurelia-event-aggregator'], function (_export) {
-  'use strict';
+'use strict';
 
-  var inject, customAttribute, componentHandler, EventAggregator, mdlTypes, MDLCustomAttribute;
+System.register(['aurelia-framework', 'encapsulated-mdl', 'aurelia-event-aggregator'], function (_export, _context) {
+  "use strict";
 
-  var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+  var inject, customAttribute, componentHandler, EventAggregator, _dec, _dec2, _class, mdlTypes, MDLCustomAttribute;
 
-  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
 
   function manageRipple(element) {
     if (element.classList.contains('mdl-js-ripple-effect')) {
       componentHandler.upgradeElement(element, 'MaterialRipple');
     }
 
-    if (element.MaterialIconToggle || element.MaterialCheckbox) {
+    if (element.MaterialIconToggle || element.MaterialCheckbox || element.MaterialRadio) {
       var children = element.children;
       if (children) {
         for (var i = 0; i < children.length; i++) {
@@ -26,84 +30,57 @@ System.register(['aurelia-framework', 'encapsulated-mdl', 'aurelia-event-aggrega
   }
 
   function upgradeElement(element, type) {
-    var _ref = mdlTypes[type] || {};
-
-    var html = _ref.html;
-    var fct = _ref.fct;
-    var js = _ref.js;
+    var _ref = mdlTypes[type] || {},
+        html = _ref.html,
+        fct = _ref.fct,
+        js = _ref.js;
 
     if (html) {
-      var _iteratorNormalCompletion = true;
-      var _didIteratorError = false;
-      var _iteratorError = undefined;
+      for (var _iterator = html, _isArray = Array.isArray(_iterator), _i = 0, _iterator = _isArray ? _iterator : _iterator[Symbol.iterator]();;) {
+        var _ref2;
 
-      try {
-        for (var _iterator = html[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-          var h = _step.value;
+        if (_isArray) {
+          if (_i >= _iterator.length) break;
+          _ref2 = _iterator[_i++];
+        } else {
+          _i = _iterator.next();
+          if (_i.done) break;
+          _ref2 = _i.value;
+        }
 
-          element.classList.add(h);
-        }
-      } catch (err) {
-        _didIteratorError = true;
-        _iteratorError = err;
-      } finally {
-        try {
-          if (!_iteratorNormalCompletion && _iterator['return']) {
-            _iterator['return']();
-          }
-        } finally {
-          if (_didIteratorError) {
-            throw _iteratorError;
-          }
-        }
+        var h = _ref2;
+
+        element.classList.add(h);
       }
     }
-    var _iteratorNormalCompletion2 = true;
-    var _didIteratorError2 = false;
-    var _iteratorError2 = undefined;
+    for (var _iterator2 = js, _isArray2 = Array.isArray(_iterator2), _i2 = 0, _iterator2 = _isArray2 ? _iterator2 : _iterator2[Symbol.iterator]();;) {
+      var _ref3;
 
-    try {
-      for (var _iterator2 = js[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
-        var t = _step2.value;
-        componentHandler.upgradeElement(element, t);
+      if (_isArray2) {
+        if (_i2 >= _iterator2.length) break;
+        _ref3 = _iterator2[_i2++];
+      } else {
+        _i2 = _iterator2.next();
+        if (_i2.done) break;
+        _ref3 = _i2.value;
       }
-    } catch (err) {
-      _didIteratorError2 = true;
-      _iteratorError2 = err;
-    } finally {
-      try {
-        if (!_iteratorNormalCompletion2 && _iterator2['return']) {
-          _iterator2['return']();
-        }
-      } finally {
-        if (_didIteratorError2) {
-          throw _iteratorError2;
-        }
-      }
-    }
 
-    var _iteratorNormalCompletion3 = true;
-    var _didIteratorError3 = false;
-    var _iteratorError3 = undefined;
+      var t = _ref3;
+      componentHandler.upgradeElement(element, t);
+    }for (var _iterator3 = fct, _isArray3 = Array.isArray(_iterator3), _i3 = 0, _iterator3 = _isArray3 ? _iterator3 : _iterator3[Symbol.iterator]();;) {
+      var _ref4;
 
-    try {
-      for (var _iterator3 = fct[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
-        var f = _step3.value;
-        f(element);
+      if (_isArray3) {
+        if (_i3 >= _iterator3.length) break;
+        _ref4 = _iterator3[_i3++];
+      } else {
+        _i3 = _iterator3.next();
+        if (_i3.done) break;
+        _ref4 = _i3.value;
       }
-    } catch (err) {
-      _didIteratorError3 = true;
-      _iteratorError3 = err;
-    } finally {
-      try {
-        if (!_iteratorNormalCompletion3 && _iterator3['return']) {
-          _iterator3['return']();
-        }
-      } finally {
-        if (_didIteratorError3) {
-          throw _iteratorError3;
-        }
-      }
+
+      var f = _ref4;
+      f(element);
     }
   }
 
@@ -213,7 +190,7 @@ System.register(['aurelia-framework', 'encapsulated-mdl', 'aurelia-event-aggrega
           html: ['mdl-spinner', 'mdl-js-spinner'],
           fct: []
         },
-        'switch': {
+        switch: {
           js: ['MaterialSwitch'],
           html: ['mdl-switch', 'mdl-js-switch'],
           fct: [manageRipple]
@@ -241,31 +218,24 @@ System.register(['aurelia-framework', 'encapsulated-mdl', 'aurelia-event-aggrega
         }
       };
 
-      MDLCustomAttribute = (function () {
+      _export('MDLCustomAttribute', MDLCustomAttribute = (_dec = inject(Element, EventAggregator), _dec2 = customAttribute('mdl'), _dec(_class = _dec2(_class = function () {
         function MDLCustomAttribute(element, eventAggregator) {
-          _classCallCheck(this, _MDLCustomAttribute);
+          _classCallCheck(this, MDLCustomAttribute);
 
           this.element = element;
           this.eventAggregator = eventAggregator;
         }
 
-        _createClass(MDLCustomAttribute, [{
-          key: 'attached',
-          value: function attached() {
-            upgradeElement(this.element, this.value);
-            var payload = { publisher: this, data: this.element };
-            this.eventAggregator.publish('mdl:component:upgrade', payload);
-          }
-        }]);
+        MDLCustomAttribute.prototype.attached = function attached() {
+          upgradeElement(this.element, this.value);
+          var payload = { publisher: this, data: this.element };
+          this.eventAggregator.publish('mdl:component:upgrade', payload);
+        };
 
-        var _MDLCustomAttribute = MDLCustomAttribute;
-        MDLCustomAttribute = customAttribute('mdl')(MDLCustomAttribute) || MDLCustomAttribute;
-        MDLCustomAttribute = inject(Element, EventAggregator)(MDLCustomAttribute) || MDLCustomAttribute;
         return MDLCustomAttribute;
-      })();
+      }()) || _class) || _class));
 
       _export('MDLCustomAttribute', MDLCustomAttribute);
     }
   };
 });
-//# sourceMappingURL=mdl.js.map

@@ -1,6 +1,8 @@
-import {inject, customAttribute} from 'aurelia-framework';
-import {componentHandler} from 'encapsulated-mdl';
-import {EventAggregator} from 'aurelia-event-aggregator';
+var _dec, _dec2, _class;
+
+import { inject, customAttribute } from 'aurelia-framework';
+import { componentHandler } from 'encapsulated-mdl';
+import { EventAggregator } from 'aurelia-event-aggregator';
 
 let mdlTypes = {
   badge: {
@@ -119,7 +121,6 @@ let mdlTypes = {
     fct: []
   },
 
-  // Third party non official
   selectfield: {
     js: ['MaterialSelectfield'],
     html: ['mdl-selectfield'],
@@ -131,22 +132,8 @@ function manageRipple(element) {
   if (element.classList.contains('mdl-js-ripple-effect')) {
     componentHandler.upgradeElement(element, 'MaterialRipple');
   }
-  /**
-   * Causes issues: upgrades nested elements that has mdl-js-ripple-effect class before the nested elements upgraded, marking them as
-   * MaterialRipple upgraded, when the nested elements upgraded, and ripple upgrade tries to take place, it doesn't because it is already
-   * marked as upgraded.
-   * eventually causing rippleElement to be null on MaterialRipple.
-   * NOTE: "mdl-js-ripple-effect" should be only on upgradable material elements, not on non material nested elements.
-  let elements = element.querySelectorAll('.mdl-js-ripple-effect');
-  for (let el of elements) {
-    componentHandler.upgradeElement(el, 'MaterialRipple');
-  }*/
 
-  /** Some of the elements do require upgrade of nested elements, to avoid issues we must handle it carefully
-   * NOTE: not sure about all the elements that require nested upgrading. Will add all the required when used and tested.
-   */
-  if (element.MaterialIconToggle || element.MaterialCheckbox) {
-    /* We need to upgrade immediate children only, no easy way to do it (for all browsers) */
+  if (element.MaterialIconToggle || element.MaterialCheckbox || element.MaterialRadio) {
     let children = element.children;
     if (children) {
       for (let i = 0; i < children.length; i++) {
@@ -160,7 +147,7 @@ function manageRipple(element) {
 }
 
 function upgradeElement(element, type) {
-  let {html, fct, js} = (mdlTypes[type] || {});
+  let { html, fct, js } = mdlTypes[type] || {};
   if (html) {
     for (let h of html) {
       element.classList.add(h);
@@ -170,9 +157,7 @@ function upgradeElement(element, type) {
   for (let f of fct) f(element);
 }
 
-@inject(Element, EventAggregator)
-@customAttribute('mdl')
-export class MDLCustomAttribute {
+export let MDLCustomAttribute = (_dec = inject(Element, EventAggregator), _dec2 = customAttribute('mdl'), _dec(_class = _dec2(_class = class MDLCustomAttribute {
 
   constructor(element, eventAggregator) {
     this.element = element;
@@ -180,9 +165,8 @@ export class MDLCustomAttribute {
   }
 
   attached() {
-    //console.log("mdl attached: " + this.value);
     upgradeElement(this.element, this.value);
-    let payload = {publisher: this, data: this.element};
+    let payload = { publisher: this, data: this.element };
     this.eventAggregator.publish('mdl:component:upgrade', payload);
   }
-}
+}) || _class) || _class);

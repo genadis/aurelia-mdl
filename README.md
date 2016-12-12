@@ -88,16 +88,16 @@ So for example in your app you could use something like:
       this.isSmallScreenUpdate();
     }
   }
-  
+
   isSmallScreenUpdate() {
     this.isSmallScreen = $(this.mdlLayout.element_).hasClass('is-small-screen');
   }
-  
+
   windowResizeHandler(ev) {
     this.isSmallScreenUpdate();
-  }  
+  }
 ```
-Now `isSmallScreen` property will hold boolean of whether MDL layout is for small screens or desktop (for dynamic websites). 
+Now `isSmallScreen` property will hold boolean of whether MDL layout is for small screens or desktop (for dynamic websites).
 
 ## Install
 
@@ -155,7 +155,7 @@ or better yet add to your package.json jspm dependencies:
   }
 ```
 
-Make sure you use [manual bootstrapping](http://aurelia.io/hub.html#/doc/article/aurelia/framework/latest/app-configuration-and-startup/4). 
+Make sure you use [manual bootstrapping](http://aurelia.io/hub.html#/doc/article/aurelia/framework/latest/app-configuration-and-startup/4).
 
 Update  your bootstrapping:
 
@@ -194,9 +194,9 @@ Use wrapped MDL components in your model views as explained above.
 [![ZenHub](https://raw.githubusercontent.com/ZenHubIO/support/master/zenhub-badge.png)](https://zenhub.io)
 [![Join the chat at https://gitter.im/aurelia/discuss](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/aurelia/discuss?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-The skeleton is part of the [Aurelia](http://www.aurelia.io/) platform. It sets up a standard aurelia plugin using gulp to build your ES6 code with the Babel compiler. Karma/Jasmine testing is also configured.
+This skeleton is part of the [Aurelia](http://www.aurelia.io/) platform. It sets up a standard aurelia plugin using gulp to build your ES6 code with the Babel compiler. Karma/Jasmine testing is also configured.
 
-> To keep up to date on [Aurelia](http://www.aurelia.io/), please visit and subscribe to [the official blog](http://blog.durandal.io/). If you have questions, we invite you to [join us on Gitter](https://gitter.im/aurelia/discuss). If you would like to have deeper insight into our development process, please install the [ZenHub](https://zenhub.io) Chrome Extension and visit any of our repository's boards. You can get an overview of all Aurelia work by visiting [the framework board](https://github.com/aurelia/framework#boards).
+> To keep up to date on [Aurelia](http://www.aurelia.io/), please visit and subscribe to [the official blog](http://blog.aurelia.io/) and [our email list](http://eepurl.com/ces50j). We also invite you to [follow us on twitter](https://twitter.com/aureliaeffect). If you have questions, please [join our community on Gitter](https://gitter.im/aurelia/discuss) or use [stack overflow](http://stackoverflow.com/search?q=aurelia). Documentation can be found [in our developer hub](http://aurelia.io/hub.html). If you would like to have deeper insight into our development process, please install the [ZenHub](https://zenhub.io) Chrome or Firefox Extension and visit any of our repository's boards.
 
 ## Building The Code
 
