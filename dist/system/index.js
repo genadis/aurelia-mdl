@@ -1,6 +1,6 @@
 'use strict';
 
-System.register([], function (_export, _context) {
+System.register(['./mdl'], function (_export, _context) {
   "use strict";
 
   function configure(config) {
@@ -10,7 +10,7 @@ System.register([], function (_export, _context) {
   _export('configure', configure);
 
   return {
-    setters: [],
+    setters: [function (_mdl) {}],
     execute: function () {}
   };
 });
