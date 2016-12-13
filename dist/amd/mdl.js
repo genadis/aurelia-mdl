@@ -1,4 +1,4 @@
-define(['exports', 'aurelia-framework', 'encapsulated-mdl', 'aurelia-event-aggregator'], function (exports, _aureliaFramework, _encapsulatedMdl, _aureliaEventAggregator) {
+define(['exports', 'aurelia-framework', 'encapsulated-mdl'], function (exports, _aureliaFramework, _encapsulatedMdl) {
   'use strict';
 
   Object.defineProperty(exports, "__esModule", {
@@ -211,18 +211,23 @@ define(['exports', 'aurelia-framework', 'encapsulated-mdl', 'aurelia-event-aggre
     }
   }
 
-  var MDLCustomAttribute = exports.MDLCustomAttribute = (_dec = (0, _aureliaFramework.inject)(Element, _aureliaEventAggregator.EventAggregator), _dec2 = (0, _aureliaFramework.customAttribute)('mdl'), _dec(_class = _dec2(_class = function () {
-    function MDLCustomAttribute(element, eventAggregator) {
+  function downgradeElement(element) {
+    _encapsulatedMdl.componentHandler.downgradeElements(element);
+  }
+
+  var MDLCustomAttribute = exports.MDLCustomAttribute = (_dec = (0, _aureliaFramework.inject)(_aureliaFramework.DOM.Element), _dec2 = (0, _aureliaFramework.customAttribute)('mdl'), _dec(_class = _dec2(_class = function () {
+    function MDLCustomAttribute(element) {
       _classCallCheck(this, MDLCustomAttribute);
 
       this.element = element;
-      this.eventAggregator = eventAggregator;
     }
 
     MDLCustomAttribute.prototype.attached = function attached() {
       upgradeElement(this.element, this.value);
-      var payload = { publisher: this, data: this.element };
-      this.eventAggregator.publish('mdl:component:upgrade', payload);
+    };
+
+    MDLCustomAttribute.prototype.detached = function detached() {
+      downgradeElement(this.element);
     };
 
     return MDLCustomAttribute;

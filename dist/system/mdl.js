@@ -1,9 +1,9 @@
 'use strict';
 
-System.register(['aurelia-framework', 'encapsulated-mdl', 'aurelia-event-aggregator'], function (_export, _context) {
+System.register(['aurelia-framework', 'encapsulated-mdl'], function (_export, _context) {
   "use strict";
 
-  var inject, customAttribute, componentHandler, EventAggregator, _dec, _dec2, _class, mdlTypes, MDLCustomAttribute;
+  var inject, customAttribute, DOM, componentHandler, _dec, _dec2, _class, mdlTypes, MDLCustomAttribute;
 
   function _classCallCheck(instance, Constructor) {
     if (!(instance instanceof Constructor)) {
@@ -84,14 +84,17 @@ System.register(['aurelia-framework', 'encapsulated-mdl', 'aurelia-event-aggrega
     }
   }
 
+  function downgradeElement(element) {
+    componentHandler.downgradeElements(element);
+  }
+
   return {
     setters: [function (_aureliaFramework) {
       inject = _aureliaFramework.inject;
       customAttribute = _aureliaFramework.customAttribute;
+      DOM = _aureliaFramework.DOM;
     }, function (_encapsulatedMdl) {
       componentHandler = _encapsulatedMdl.componentHandler;
-    }, function (_aureliaEventAggregator) {
-      EventAggregator = _aureliaEventAggregator.EventAggregator;
     }],
     execute: function () {
       mdlTypes = {
@@ -218,18 +221,19 @@ System.register(['aurelia-framework', 'encapsulated-mdl', 'aurelia-event-aggrega
         }
       };
 
-      _export('MDLCustomAttribute', MDLCustomAttribute = (_dec = inject(Element, EventAggregator), _dec2 = customAttribute('mdl'), _dec(_class = _dec2(_class = function () {
-        function MDLCustomAttribute(element, eventAggregator) {
+      _export('MDLCustomAttribute', MDLCustomAttribute = (_dec = inject(DOM.Element), _dec2 = customAttribute('mdl'), _dec(_class = _dec2(_class = function () {
+        function MDLCustomAttribute(element) {
           _classCallCheck(this, MDLCustomAttribute);
 
           this.element = element;
-          this.eventAggregator = eventAggregator;
         }
 
         MDLCustomAttribute.prototype.attached = function attached() {
           upgradeElement(this.element, this.value);
-          var payload = { publisher: this, data: this.element };
-          this.eventAggregator.publish('mdl:component:upgrade', payload);
+        };
+
+        MDLCustomAttribute.prototype.detached = function detached() {
+          downgradeElement(this.element);
         };
 
         return MDLCustomAttribute;

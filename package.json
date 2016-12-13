@@ -20,7 +20,7 @@
     "url": "https://github.com/genadis/aurelia-mdl"
   },
   "dependencies": {
-    "encapsulated-mdl": "^1.2.2"
+    "encapsulated-mdl": "^1.2.4"
   },
   "devDependencies": {
     "aurelia-tools": "^0.2.4",
@@ -65,11 +65,12 @@
       "dist": "dist/amd"
     },
     "dependencies": {
-      "encapsulated-mdl": "npm:encapsulated-mdl@^1.2.2"
+      "encapsulated-mdl": "^1.2.4"
     },
-    "peerDependencies": {},
     "devDependencies": {
-      "aurelia-polyfills": "^1.0.0-beta.1.1.0"
+      "aurelia-bootstrapper": "^1.0.0-rc.1.0.0",
+      "aurelia-polyfills": "^1.0.0-beta.1.1.0",
+      "aurelia-testing": "^1.0.0-beta.2.0.1"
     }
   }
 }

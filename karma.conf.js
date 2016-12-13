@@ -16,14 +16,16 @@ module.exports = function(config) {
       loadFiles: ['test/setup.js', 'test/unit/**/*.js'],
       serveFiles: ['src/**/*.js'],
       paths: {
-        '*': '*',
+        '*': 'src/*',
+        'test/*': 'test/*',
         'github:*': 'jspm_packages/github/*',
         'npm:*': 'jspm_packages/npm/*'
       }
     },
 
     // list of files / patterns to load in the browser
-    files: [],
+    files: [
+    ],
 
     // list of files to exclude
     exclude: [],

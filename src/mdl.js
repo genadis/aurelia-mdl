@@ -1,6 +1,5 @@
-import {inject, customAttribute} from 'aurelia-framework';
+import {inject, customAttribute, DOM} from 'aurelia-framework';
 import {componentHandler} from 'encapsulated-mdl';
-import {EventAggregator} from 'aurelia-event-aggregator';
 
 let mdlTypes = {
   badge: {
@@ -170,19 +169,23 @@ function upgradeElement(element, type) {
   for (let f of fct) f(element);
 }
 
-@inject(Element, EventAggregator)
+function downgradeElement(element) {
+  componentHandler.downgradeElements(element);
+}
+
+@inject(DOM.Element)
 @customAttribute('mdl')
 export class MDLCustomAttribute {
 
-  constructor(element, eventAggregator) {
+  constructor(element) {
     this.element = element;
-    this.eventAggregator = eventAggregator;
   }
 
   attached() {
-    //console.log("mdl attached: " + this.value);
     upgradeElement(this.element, this.value);
-    let payload = {publisher: this, data: this.element};
-    this.eventAggregator.publish('mdl:component:upgrade', payload);
+  }
+
+  detached() {
+    downgradeElement(this.element);
   }
 }

@@ -6,7 +6,7 @@ with lots of credit to [redpelicans/aurelia-material](https://github.com/redpeli
 
 Merged into [aurelia/skeleton-plugin](https://github.com/aurelia/skeleton-plugin)
 
-Best to be used with [genadis/encapsulated-mdl](https://github.com/genadis/encapsulated-mdl) which is configured as jspm dependency. But should work with original mdl as well (will use global mdl), just change the jspm dependency.
+Depends on [genadis/encapsulated-mdl](https://github.com/genadis/encapsulated-mdl).
 
 [Material Design Lite](http://www.getmdl.io) has been designed for static html sites. To use it on dynamic ones, we have to register explictly new DOM elements (see [MDL](http://www.getmdl.io/started/index.html#dynamic))
 
@@ -62,42 +62,37 @@ You will write in your views:
   'tooltip' ]
 ```
 ### Events
+> Deprecated!
+Used to depend on `aurelia-event-aggregator` and publish `mdl:component:upgrade` for each upgraded element.
 
-Aurelia MDL makes use of `aurelia-event-aggregator`.
-`mdl:component:upgrade` is published for each upgraded element.
-payload:
+If you need a hook for upgrade done, you could use `TaskQueue` something like:
+
+In your custom Element View
 ```
-let payload = {
-  publisher: this,      // Object of MDLCustomAttribute
-  data: this.element    // upgraded DOM element
-};
+<template>
+  <button mdl="button" ref="buttonElement"></button>
+<template>
 ```
 
-So for example in your app you could use something like:
-```
-  constructor(eventAggregator) {
-    /* ... */
-    this.eventAggregator = eventAggregator;
-    this.eventAggregator.subscribe('mdl:component:upgrade', this.mdlUpgradeHandler.bind(this));
-    $(window).resize(this.windowResizeHandler.bind(this));
+In your custom Element View-Model
+```js
+import {customElement, inject, TaskQueue} from 'aurelia-framework';
+
+@customElement('my-element')
+@inject(TaskQueue)
+export class MyElement {
+  buttonElement;
+  constructor(element, taskQueue) {
+    this.taskQueue = taskQueue;
   }
 
-  mdlUpgradeHandler(payload) {
-    if(payload.data.MaterialLayout) {
-      this.mdlLayout = payload.data.MaterialLayout;
-      this.isSmallScreenUpdate();
-    }
+  attached() {
+    this.taskQueue.queueTask(() => {
+      // this.buttonElement.MaterialButton is upgraded
+    });
   }
-
-  isSmallScreenUpdate() {
-    this.isSmallScreen = $(this.mdlLayout.element_).hasClass('is-small-screen');
-  }
-
-  windowResizeHandler(ev) {
-    this.isSmallScreenUpdate();
-  }
+}
 ```
-Now `isSmallScreen` property will hold boolean of whether MDL layout is for small screens or desktop (for dynamic websites).
 
 ## Install
 

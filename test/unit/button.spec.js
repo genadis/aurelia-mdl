@@ -1,19 +1,19 @@
 import {StageComponent} from 'aurelia-testing';
 import {bootstrap} from 'aurelia-bootstrapper';
 
-describe('TextFieldComponent', () => {
+describe('ButtonComponent', () => {
   let component;
 
   beforeEach(() => {
     component = StageComponent
       .withResources('mdl')
-      .inView('<div mdl="textfield"><input class="mdl-textfield__input" type="text" id="sample1"><label class="mdl-textfield__label" for="sample1">Text...</label></div>')
+      .inView('<button mdl="button">Button</button>')
       .boundTo({});
   });
 
-  it('should upgrade the button with MaterialTextfield', done => {
+  it('should upgrade the button with MaterialButton', done => {
     component.create(bootstrap).then(() => {
-      expect(component.element.MaterialTextfield).toBeDefined();
+      expect(component.element.MaterialButton).toBeDefined();
       done();
     }).catch(e => console.log(e.toString()));
   });

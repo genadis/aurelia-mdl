@@ -8,3 +8,4 @@ doc
 .eslintrc
 gulpfile.js
 karma.conf.js
+jspm_packages
