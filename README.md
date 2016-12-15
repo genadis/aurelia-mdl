@@ -8,6 +8,8 @@ Merged into [aurelia/skeleton-plugin](https://github.com/aurelia/skeleton-plugin
 
 Depends on [genadis/encapsulated-mdl](https://github.com/genadis/encapsulated-mdl).
 
+Has support for [mdl-selectfield](https://github.com/genadis/encapsulated-mdl-selectfield)
+
 [Material Design Lite](http://www.getmdl.io) has been designed for static html sites. To use it on dynamic ones, we have to register explictly new DOM elements (see [MDL](http://www.getmdl.io/started/index.html#dynamic))
 
 `Aurelia MDL` will do that for you transparently while keeping MDL flexibility.
@@ -59,8 +61,139 @@ You will write in your views:
   'switch',
   'tabs',
   'textfield',
-  'tooltip' ]
+  'tooltip',
+  
+   // // Third party not MDL official
+  'selectfield' 
+]
 ```
+>Third party components such as `selectfield` are not hard dependencies, meaning they need to be added manualy as explained in below.
+
+## Install
+
+### Aurelia CLI
+
+Install the package:
+```shell
+npm install aurelia-mdl --save
+```
+Add package configuration to `aurelia.json`:
+```
+ "dependencies": [
+          {
+            "name": "encapsulated-mdl",
+            "path": "../node_modules/encapsulated-mdl/dist",
+            "main": "material.min",
+            "resources": [
+              "material.blue_grey-red.min.css"
+            ]
+          },
+          {
+            "name": "aurelia-mdl",
+            "path": "../node_modules/aurelia-mdl/dist/amd",
+            "main": "index",
+            "deps": ["encapsulated-mdl"]
+          }
+        ]
+```
+Notice the resources in encapsulated-mdl, add your favorite style.
+
+In your app.hml (or wherever):
+```html
+<require from="encapsulated-mdl/material.blue_grey-red.min.css"></require>
+```
+And in [manual bootstrapping](http://aurelia.io/hub.html#/doc/article/aurelia/framework/latest/app-configuration-and-startup/4):
+```js
+aurelia.use.plugin('aurelia-mdl');
+```
+
+#### Adding [mdl-selectfield](https://github.com/genadis/encapsulated-mdl-selectfield)
+Install the package:
+```shell
+npm install encapsulated-mdl-selectfield --save
+```
+Add package configuration to `aurelia.json`:
+```
+ "dependencies": [
+          {
+            "name": "encapsulated-mdl-selectfield",
+            "path": "../node_modules/encapsulated-mdl-selectfield/dist",
+            "main": "mdl-selectfield.min",
+            "resources": [
+              "mdl-selectfield.min.css"
+            ],
+            "deps": ["encapsulated-mdl"]
+          }
+        ]
+```
+And Add `encapsulated-mdl-selectfield` to `deps` of `aurelia-mdl` package configuration.
+
+In your app.hml (or wherever):
+```html
+<require from="encapsulated-mdl-selectfield/mdl-selectfield.min.css"></require>
+```
+> [mdl-selectfield](https://github.com/mebibou/mdl-selectfield) does not respect styling it always uses the default...
+
+In your app.js or main.js (must be js before usage of the component so it registers with mdl)
+```js
+import 'encapsulated-mdl-selectfield';
+```
+
+### JSPM
+
+In your project install the plugin via `jspm` with following command
+
+```
+  $ jspm install npm:aurelia-mdl
+```
+or better yet add to your package.json jspm dependencies:
+```
+  "jspm": {
+    "dependencies": {
+      ...
+      "encapsulated-mdl": "^1.2.0"
+      "aurelia-mdl": "^0.4.0",
+      ...
+    }
+  }
+```
+
+And in [manual bootstrapping](http://aurelia.io/hub.html#/doc/article/aurelia/framework/latest/app-configuration-and-startup/4):
+```js
+aurelia.use.plugin('aurelia-mdl');
+```
+
+Include material design css:
+```html
+  <require from="encapsulated-mdl/material.amber-pink.min.css"></require>
+```
+
+#### Adding [mdl-selectfield](https://github.com/genadis/encapsulated-mdl-selectfield)
+Install the package:
+```shell
+jspm install npm:encapsulated-mdl-selectfield
+```
+or better yet add to your package.json jspm dependencies:
+```
+  "jspm": {
+    "dependencies": {
+      ...
+      "encapsulated-mdl-selectfield": "^1.0.0"
+      ...
+    }
+  }
+```
+In your app.hml (or wherever):
+```html
+<require from="encapsulated-mdl-selectfield/mdl-selectfield.min.css"></require>
+```
+> [mdl-selectfield](https://github.com/mebibou/mdl-selectfield) does not respect styling it always uses the default...
+
+In your app.js or main.js (must be js before usage of the component so it registers with mdl)
+```js
+import 'encapsulated-mdl-selectfield';
+```
+
 ### Events
 > Deprecated!
 Used to depend on `aurelia-event-aggregator` and publish `mdl:component:upgrade` for each upgraded element.
@@ -93,96 +226,6 @@ export class MyElement {
   }
 }
 ```
-
-## Install
-
-### Aurelia CLI
-
-Install the package:
-```shell
-npm install aurelia-mdl --save
-```
-Add package configuration to `aurelia.json`:
-```
- "dependencies": [
-          {
-            "name": "encapsulated-mdl",
-            "path": "../node_modules/encapsulated-mdl/dist",
-            "main": "material.min",
-            "resources": [
-              "material.blue_grey-red.min.css"
-            ]
-          },
-          {
-            "name": "aurelia-mdl",
-            "path": "../node_modules/aurelia-mdl/dist/amd",
-            "main": "index",
-            "deps": ["encapsulated-mdl"]
-          }
-        ]
-```
-Notice the resources in encapsulated-mdl, add your favorite style.
-
-In your app.hml (or wherever):
-```
-<require from="encapsulated-mdl/material.blue_grey-red.min.css"></require>
-```
-And in [manual bootstrapping](http://aurelia.io/hub.html#/doc/article/aurelia/framework/latest/app-configuration-and-startup/4):
-```
-aurelia.use.plugin('aurelia-mdl');
-```
-
-### JSPM
-
-In your project install the plugin via `jspm` with following command
-
-```
-  $ jspm install github:genadis/aurelia-mdl@^0.1.0
-```
-or better yet add to your package.json jspm dependencies:
-```
-  "jspm": {
-    "dependencies": {
-      ...
-      "aurelia-mdl": "github:genadis/aurelia-mdl@^0.1.0",
-      ...
-    }
-  }
-```
-
-Make sure you use [manual bootstrapping](http://aurelia.io/hub.html#/doc/article/aurelia/framework/latest/app-configuration-and-startup/4).
-
-Update  your bootstrapping:
-
-  ```javascript
-export function configure(aurelia) {
-  aurelia.use
-    .standardConfiguration()
-    .developmentLogging();
-
-  aurelia.use.plugin('aurelia-mdl');    // Add the plugin registration somewhere in your bootstrapping code
-
-  aurelia.start().then(a => a.setRoot());
-}
-   ```
-
-Include material design css:
-```html
-      <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.indigo-pink.min.css">
-```
-or
-```html
-      <link rel="stylesheet" href="../jspm_packages/github/genadis/encapsulated-mdl@2.0.0/material.amber-pink.min.css">
-```
-or
-```html
-  <require from="encapsulated-mdl/material.amber-pink.min.css"></require>
-```
-> Notice: you should have the dependency defined in package.json/config.js, so SystemJS would know where to look for `encapsulated-mdl`
-something like `"encapsulated-mdl": "github:genadis/encapsulated-mdl@^2.0.8"`.
-
-Use wrapped MDL components in your model views as explained above.
-
 
 # Based on aurelia-skeleton-plugin
 
