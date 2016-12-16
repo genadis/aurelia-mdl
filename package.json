@@ -1,6 +1,6 @@
 {
   "name": "aurelia-mdl",
-  "version": "0.4.2",
+  "version": "0.4.3",
   "description": "Aurelia wrapper for Material Design Lite.",
   "keywords": [
     "aurelia",
@@ -60,9 +60,9 @@
     "registry": "npm",
     "jspmPackage": true,
     "main": "index",
-    "format": "amd",
+    "format": "cjs",
     "directories": {
-      "dist": "dist/amd"
+      "dist": "dist/commonjs"
     },
     "dependencies": {
       "encapsulated-mdl": "^1.2.4"
