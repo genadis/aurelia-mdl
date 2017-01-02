@@ -232,9 +232,7 @@ System.register(['aurelia-framework', 'encapsulated-mdl'], function (_export, _c
           upgradeElement(this.element, this.value);
         };
 
-        MDLCustomAttribute.prototype.detached = function detached() {
-          downgradeElement(this.element);
-        };
+        MDLCustomAttribute.prototype.detached = function detached() {};
 
         return MDLCustomAttribute;
       }()) || _class) || _class));

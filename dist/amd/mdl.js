@@ -226,9 +226,7 @@ define(['exports', 'aurelia-framework', 'encapsulated-mdl'], function (exports, 
       upgradeElement(this.element, this.value);
     };
 
-    MDLCustomAttribute.prototype.detached = function detached() {
-      downgradeElement(this.element);
-    };
+    MDLCustomAttribute.prototype.detached = function detached() {};
 
     return MDLCustomAttribute;
   }()) || _class) || _class);

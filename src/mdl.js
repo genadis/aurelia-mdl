@@ -182,10 +182,18 @@ export class MDLCustomAttribute {
   }
 
   attached() {
+    /**
+     * MDL already checks for element being upgraded and does not upgrade it twice (unless downgrade is called).
+     */
     upgradeElement(this.element, this.value);
   }
 
   detached() {
-    downgradeElement(this.element);
+    /**
+     * Aurelia keeps reference to DOM element and reuses same elements all over again.
+     * MDL does not truly degrades elements: https://github.com/google/material-design-lite/issues/4209
+     * so degrading in fact causing double upgrade on next attach.
+     */
+    // downgradeElement(this.element);
   }
 }

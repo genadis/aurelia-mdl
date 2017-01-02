@@ -170,7 +170,5 @@ export let MDLCustomAttribute = (_dec = inject(DOM.Element), _dec2 = customAttri
     upgradeElement(this.element, this.value);
   }
 
-  detached() {
-    downgradeElement(this.element);
-  }
+  detached() {}
 }) || _class) || _class);
