@@ -1,3 +1,5 @@
+## Deprecated. No longer maintained due to https://material.io/components/web/
+
 # aurelia-mdl
 
 Aurelia wrapper for [Material Design Lite](http://www.getmdl.io).
